@@ -1,67 +1,54 @@
- <html>
-    <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
-      <style>
-        body { margin: 0; overflow: hidden; }
-        #status {
-          position: fixed;
-          top: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: rgba(0, 0, 0, 0.6);
-          color: #fff;
-          padding: 6px 10px;
-          border-radius: 8px;
-          font-family: Arial, sans-serif;
-          font-size: 14px;
-          z-index: 10;
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Atividades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 50px 20px;
         }
-      </style>
-    </head>
 
-    <body>
-      <div id="status">Aponte a câmera para o a logo da Fundação Matias Machline.png</div>
+        h1 {
+            color: #333;
+            margin-bottom: 40px;
+        }
 
-      <a-scene
-        mindar-image="imageTargetSrc: targets.mind;"
-        color-space="sRGB"
-        renderer="colorManagement: true, physicallyCorrectLights"
-        vr-mode-ui="enabled: false"
-        device-orientation-permission-ui="enabled: false">
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+        }
 
-        <a-assets>
-      <a-asset-item id="cubeModel" src="cube.gltf"></a-asset-item>
-        </a-assets>
+        .menu a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
 
-    
-        <a-entity light="type: ambient; intensity: 1.5"></a-entity>
-        <a-entity light="type: directional; intensity: 2" position="1 1 1"></a-entity>
-
-        <a-camera look-controls="enabled: false"></a-camera>
-
-       
-        <a-entity id="target" mindar-image-target="targetIndex: 0">
-          <a-gltf-model
-            src="#cubeModel"
-            position="0 0 0.2"
-            rotation="0 45 0"
-            scale="1 1 1"
-            animation="property: rotation; to: 0 360 0; loop: true; dur: 4000">
-          </a-gltf-model>
-        </a-entity>
-      </a-scene>
-
-      <script>
-        const status = document.getElementById("status");
-        const target = document.querySelector("#target");
-        target.addEventListener("targetFound", () => {
-          status.textContent = "Target reconhecido!";
-        });
-        target.addEventListener("targetLost", () => {
-          status.textContent = "Aponte novamente para o target.png";
-        });
-      </script>
-    </body>
-  </html>
+        .menu a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Escolha a Atividade</h1>
+    <div class="menu">
+        <a href="atividade2110.html">Atividade do dia 21/10</a>
+        <a href="atividade2810.html">Atividade do dia 28/10</a>
+    </div>
+</body>
+</html>
